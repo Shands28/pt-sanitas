@@ -13,4 +13,12 @@ describe('ImageListGeneratorService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
+  it('should get full imageList', () => {
+    expect(service.getImageList().length).toBe(4000);
+  })
+
+  it('should search imageList', () => {
+    expect(service.searchImageList('1').length).toBe(1)
+  })
 });
