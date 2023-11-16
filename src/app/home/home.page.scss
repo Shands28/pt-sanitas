@@ -3,9 +3,7 @@
   flex-direction: column;
 
   .search-container {
-    display: grid;
-    gap: 1.5rem;
-    grid-template-columns: repeat(3, 200px);
+    display: flex;
     padding: 1.5rem 1.5rem 0;
     justify-content: center;
   }
@@ -13,13 +11,35 @@
   .images-container {
     display: grid;
     gap: 1.5rem;
-    grid-template-columns: repeat(6, 1fr);
     overflow-y: scroll;
     padding: 1.5rem;
+
+    .image-box {
+      background: #8c8c8c;
+      padding: 10px;
+
+    }
   }
 
   img {
     height: auto;
   }
+}
 
+@media (min-width: 960px) {
+  .images-container {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+@media (max-width: 960px) {
+  .images-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .images-container {
+    grid-template-columns: 1fr;
+  }
 }

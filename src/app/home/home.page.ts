@@ -4,14 +4,12 @@ import {
   IonToolbar,
   IonTitle,
   IonContent,
-  IonInput,
-  IonButton,
-  IonSelect,
-  IonRippleEffect, IonSelectOption
+  IonRippleEffect, IonSelectOption, IonSearchbar
 } from '@ionic/angular/standalone';
-import {NgForOf, NgOptimizedImage} from "@angular/common";
-import {TextGeneratorService} from "../services/text-generator.service";
+import {NgForOf, NgOptimizedImage, TitleCasePipe} from "@angular/common";
 import {FormsModule} from "@angular/forms";
+import {ImageListGeneratorService} from "../services/image-list-generator.service";
+import {Image} from "../interfaces/image";
 
 @Component({
   selector: 'app-home',
@@ -25,40 +23,34 @@ import {FormsModule} from "@angular/forms";
     IonContent,
     NgForOf,
     NgOptimizedImage,
-    IonInput,
-    IonButton,
-    IonSelect,
     IonRippleEffect,
     IonSelectOption,
-    FormsModule
+    FormsModule,
+    IonSearchbar,
+    TitleCasePipe
   ],
 })
 export class HomePage implements OnInit {
 
-  textGeneratorService: TextGeneratorService = inject(TextGeneratorService)
 
-  imagesList: {
-    id: number,
-    photo: string,
-    text: string
-  }[] = [];
+  imageListGeneratorService: ImageListGeneratorService = inject(ImageListGeneratorService);
+
+  imagesList: Image[] = [];
   searchText: string = '';
-  searchBy: string = 'id';
-
-  constructor() {
-  }
 
   ngOnInit(): void {
-    for (let i = 0; i < 10; i++) {
-      this.imagesList.push({
-        id: this.imagesList.length,
-        photo: `https://picsum.photos/id/${i}/500/500`,
-        text: this.textGeneratorService.generateRandomText(5)
-      })
-    }
+    this.imagesList = this.imageListGeneratorService.getImageList();
   }
 
   searchImage(): void {
-    console.log(this.searchText, this.searchBy)
+    if (this.searchText === '') {
+      this.clearSearch()
+    } else {
+      this.imagesList = this.imageListGeneratorService.searchImageList(this.searchText);
+    }
+  }
+
+  clearSearch(): void {
+    this.imagesList = this.imageListGeneratorService.getImageList();
   }
 }
