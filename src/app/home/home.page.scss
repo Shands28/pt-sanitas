@@ -1,27 +1,25 @@
-#container {
-  text-align: center;
+.home-wrapper {
+  display: flex;
+  flex-direction: column;
 
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-}
+  .search-container {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(3, 200px);
+    padding: 1.5rem 1.5rem 0;
+    justify-content: center;
+  }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
-}
+  .images-container {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(6, 1fr);
+    overflow-y: scroll;
+    padding: 1.5rem;
+  }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
+  img {
+    height: auto;
+  }
 
-  color: #8c8c8c;
-
-  margin: 0;
-}
-
-#container a {
-  text-decoration: none;
 }

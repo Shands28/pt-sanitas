@@ -1,20 +1,19 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+<div class="home-wrapper">
+  <div class="search-container">
+    <ion-input label="Default input" type="text" [(ngModel)]="searchText"></ion-input>
+    <ion-select aria-label="Search by" interface="popover" [(ngModel)]="searchBy">
+      <ion-select-option value="id">Id</ion-select-option>
+      <ion-select-option value="text">Text</ion-select-option>
+    </ion-select>
+    <ion-button color="success" (click)="searchImage()">
+      <ion-ripple-effect></ion-ripple-effect>
+      Search
+    </ion-button>
   </div>
-</ion-content>
+  <div class="images-container">
+    <div *ngFor="let image of imagesList">
+      <img [ngSrc]="image.photo" [alt]="image.text" height="500" width="500">
+      <div>{{image.text}}</div>
+    </div>
+  </div>
+</div>
