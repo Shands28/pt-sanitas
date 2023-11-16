@@ -1,0 +1,7 @@
+{
+  "name": "pt-sanitas",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
