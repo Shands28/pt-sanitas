@@ -11,7 +11,7 @@ export class ImageListGeneratorService {
   imagesList: Image[] = [];
 
   constructor() {
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 4000; i++) {
       this.imagesList.push({
         id: this.imagesList.length,
         photo: `https://picsum.photos/id/${i}/500/500`,
@@ -30,7 +30,7 @@ export class ImageListGeneratorService {
 
   searchImageList(filter: string): Image[] {
     let filteredImageList: Image[]
-    filteredImageList = this.imagesList.filter((image: Image) => image.id.toString().includes(filter) || image.text.toLowerCase().includes(filter.toLowerCase()))
+    filteredImageList = this.imagesList.filter((image: Image) => image.id.toString() === filter || image.text.toLowerCase().includes(filter.toLowerCase()))
     return filteredImageList;
   }
 }

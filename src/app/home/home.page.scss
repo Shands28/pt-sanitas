@@ -1,6 +1,7 @@
 .home-wrapper {
   display: flex;
   flex-direction: column;
+  overflow-y: scroll;
 
   .search-container {
     display: flex;
@@ -11,13 +12,16 @@
   .images-container {
     display: grid;
     gap: 1.5rem;
-    overflow-y: scroll;
     padding: 1.5rem;
 
     .image-box {
       background: #8c8c8c;
       padding: 10px;
+    }
 
+    .warning-search {
+      grid-column: span 6;
+      text-align: center;
     }
   }
 

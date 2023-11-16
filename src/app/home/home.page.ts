@@ -4,9 +4,9 @@ import {
   IonToolbar,
   IonTitle,
   IonContent,
-  IonRippleEffect, IonSelectOption, IonSearchbar
+  IonRippleEffect, IonSelectOption, IonSearchbar, IonText
 } from '@ionic/angular/standalone';
-import {NgForOf, NgOptimizedImage, TitleCasePipe} from "@angular/common";
+import {NgForOf, NgIf, NgOptimizedImage, TitleCasePipe} from "@angular/common";
 import {FormsModule} from "@angular/forms";
 import {ImageListGeneratorService} from "../services/image-list-generator.service";
 import {Image} from "../interfaces/image";
@@ -27,7 +27,9 @@ import {Image} from "../interfaces/image";
     IonSelectOption,
     FormsModule,
     IonSearchbar,
-    TitleCasePipe
+    TitleCasePipe,
+    IonText,
+    NgIf
   ],
 })
 export class HomePage implements OnInit {
@@ -52,5 +54,10 @@ export class HomePage implements OnInit {
 
   clearSearch(): void {
     this.imagesList = this.imageListGeneratorService.getImageList();
+  }
+
+  imageLoadOnError(image: Image): void {
+    let randomImage:number = Math.round(Math.random()*1086);
+    image.photo = `https://picsum.photos/id/${randomImage}/500/500`;
   }
 }
