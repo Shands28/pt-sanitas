@@ -38,6 +38,6 @@ describe('HomePage', () => {
       text: 'Lorem'
     }
     component.imageLoadOnError(image)
-    expect(image.photo).toContain('https://picsum.photos/id/')
+    expect(image.photo).toBe('assets/image-error.svg');
   })
 });

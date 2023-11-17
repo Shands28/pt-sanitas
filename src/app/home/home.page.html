@@ -7,15 +7,17 @@
     </ion-searchbar>
   </div>
   <div class="images-container">
-    <div *ngFor="let image of imagesList" class="image-box">
-      <ion-card>
-        <img [ngSrc]="image.photo" [alt]="image.text" height="500" width="500" (error)="imageLoadOnError(image)">
-        <ion-card-header>#{{image.id}}</ion-card-header>
-        <ion-card-content>
-          {{image.text | titlecase}}
-        </ion-card-content>
-      </ion-card>
-    </div>
+    <cdk-virtual-scroll-viewport [itemSize]="500">
+      <div *cdkVirtualFor="let image of imagesList" class="image-box">
+        <ion-card>
+          <img [ngSrc]="image.photo" [alt]="image.text" height="500" width="500" (error)="imageLoadOnError(image)">
+          <ion-card-header>#{{image.id}}</ion-card-header>
+          <ion-card-content>
+            {{image.text | titlecase}}
+          </ion-card-content>
+        </ion-card>
+      </div>
+    </cdk-virtual-scroll-viewport>
     <ion-text color="danger" class="warning-search" *ngIf="imagesList.length === 0">
       <h2>No se encuentran imágenes, pruebe a buscar otro texto/id</h2>
     </ion-text>

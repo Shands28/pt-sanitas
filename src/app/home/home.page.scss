@@ -1,7 +1,7 @@
 .home-wrapper {
   display: flex;
   flex-direction: column;
-  overflow-y: scroll;
+  height: 100%;
 
   .search-container {
     display: flex;
@@ -10,8 +10,16 @@
   }
 
   .images-container {
-    display: grid;
-    padding: 1.5rem;
+    height: 100%;
+
+    .image-box {
+      width: 500px;
+      margin: auto;
+    }
+
+    cdk-virtual-scroll-viewport {
+      height: 100%;
+    }
 
     .warning-search {
       grid-column: span 6;
@@ -22,23 +30,6 @@
   img {
     height: auto;
     aspect-ratio: 1;
-  }
-}
-
-@media (min-width: 960px) {
-  .images-container {
-    grid-template-columns: repeat(6, 1fr);
-  }
-}
-
-@media (max-width: 960px) {
-  .images-container {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (max-width: 480px) {
-  .images-container {
-    grid-template-columns: 1fr;
+    background: #fff;
   }
 }

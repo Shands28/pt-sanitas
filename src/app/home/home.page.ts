@@ -10,6 +10,7 @@ import {NgForOf, NgIf, NgOptimizedImage, TitleCasePipe} from "@angular/common";
 import {FormsModule} from "@angular/forms";
 import {ImageListGeneratorService} from "../services/image-list-generator.service";
 import {Image} from "../interfaces/image";
+import {CdkFixedSizeVirtualScroll, CdkVirtualForOf, CdkVirtualScrollViewport} from "@angular/cdk/scrolling";
 
 @Component({
   selector: 'app-home',
@@ -32,7 +33,10 @@ import {Image} from "../interfaces/image";
     NgIf,
     IonCard,
     IonCardHeader,
-    IonCardContent
+    IonCardContent,
+    CdkVirtualScrollViewport,
+    CdkFixedSizeVirtualScroll,
+    CdkVirtualForOf
   ],
 })
 export class HomePage implements OnInit {
@@ -59,8 +63,8 @@ export class HomePage implements OnInit {
     this.imagesList = this.imageListGeneratorService.getImageList();
   }
 
+  // Some image don't exist in the API, in that case load a default error image
   imageLoadOnError(image: Image): void {
-    let randomImage:number = Math.round(Math.random()*1086);
-    image.photo = `https://picsum.photos/id/${randomImage}/500/500`;
+    image.photo = `assets/image-error.svg`;
   }
 }
