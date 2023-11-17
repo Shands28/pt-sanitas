@@ -31,7 +31,7 @@ describe('HomePage', () => {
     expect(component.imagesList.length).toBe(4000);
   })
 
-  it('should populate photo to a valid image', () => {
+  it('should populate photo to the default image', () => {
     let image: Image = {
       id: 1,
       photo: '',

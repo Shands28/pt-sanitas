@@ -1,13 +1,15 @@
 <div class="home-wrapper">
   <div class="search-container">
-    <ion-searchbar
-      color="primary" placeholder="Introduzca el texto/id a filtrar" [(ngModel)]="searchText"
-      (ionChange)="searchImage()" (ionClear)="clearSearch()" showClearButton="" type="text">
+    <div>
+      <ion-searchbar
+        color="primary" placeholder="Introduzca el texto/id a filtrar" [(ngModel)]="searchText"
+        (ionChange)="searchImage()" (ionClear)="clearSearch()" showClearButton="" type="text">
 
-    </ion-searchbar>
+      </ion-searchbar>
+    </div>
   </div>
   <div class="images-container">
-    <cdk-virtual-scroll-viewport [itemSize]="500">
+    <cdk-virtual-scroll-viewport [itemSize]="400">
       <div *cdkVirtualFor="let image of imagesList" class="image-box">
         <ion-card>
           <img [ngSrc]="image.photo" [alt]="image.text" height="500" width="500" (error)="imageLoadOnError(image)">
