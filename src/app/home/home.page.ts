@@ -4,7 +4,7 @@ import {
   IonToolbar,
   IonTitle,
   IonContent,
-  IonRippleEffect, IonSelectOption, IonSearchbar, IonText
+  IonRippleEffect, IonSelectOption, IonSearchbar, IonText, IonCard, IonCardHeader, IonCardContent
 } from '@ionic/angular/standalone';
 import {NgForOf, NgIf, NgOptimizedImage, TitleCasePipe} from "@angular/common";
 import {FormsModule} from "@angular/forms";
@@ -29,7 +29,10 @@ import {Image} from "../interfaces/image";
     IonSearchbar,
     TitleCasePipe,
     IonText,
-    NgIf
+    NgIf,
+    IonCard,
+    IonCardHeader,
+    IonCardContent
   ],
 })
 export class HomePage implements OnInit {
