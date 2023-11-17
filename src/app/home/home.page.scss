@@ -11,20 +11,25 @@
     div {
       width: 100%;
       max-width: 500px;
+
+      ion-searchbar {
+        padding-left: 0;
+      }
     }
   }
 
   .images-container {
     height: 100%;
 
-    ion-card {
-      width: 100%;
-    }
-
     .image-box {
       width: auto;
       max-width: 500px;
       margin: auto;
+
+      img {
+        height: auto;
+        aspect-ratio: 1;
+      }
     }
 
     cdk-virtual-scroll-viewport {
@@ -37,9 +42,5 @@
     }
   }
 
-  img {
-    height: auto;
-    aspect-ratio: 1;
-    background: #fff;
-  }
+
 }
