@@ -1,10 +1,15 @@
-import {Component, inject, OnInit} from '@angular/core';
+import {Component, ElementRef, HostListener, inject, OnInit, ViewChild} from '@angular/core';
 import {
   IonHeader,
   IonToolbar,
   IonTitle,
   IonContent,
-  IonRippleEffect, IonSelectOption, IonSearchbar, IonText, IonCard, IonCardHeader, IonCardContent
+  IonSearchbar,
+  IonText,
+  IonCard,
+  IonCardHeader,
+  IonCardSubtitle,
+  IonCardTitle
 } from '@ionic/angular/standalone';
 import {NgForOf, NgIf, NgOptimizedImage, TitleCasePipe} from "@angular/common";
 import {FormsModule} from "@angular/forms";
@@ -24,8 +29,6 @@ import {CdkFixedSizeVirtualScroll, CdkVirtualForOf, CdkVirtualScrollViewport} fr
     IonContent,
     NgForOf,
     NgOptimizedImage,
-    IonRippleEffect,
-    IonSelectOption,
     FormsModule,
     IonSearchbar,
     TitleCasePipe,
@@ -33,19 +36,21 @@ import {CdkFixedSizeVirtualScroll, CdkVirtualForOf, CdkVirtualScrollViewport} fr
     NgIf,
     IonCard,
     IonCardHeader,
-    IonCardContent,
     CdkVirtualScrollViewport,
     CdkFixedSizeVirtualScroll,
-    CdkVirtualForOf
+    CdkVirtualForOf,
+    IonCardSubtitle,
+    IonCardTitle
   ],
 })
 export class HomePage implements OnInit {
 
-
   imageListGeneratorService: ImageListGeneratorService = inject(ImageListGeneratorService);
+  @ViewChild('imageBox') imageBox: ElementRef<HTMLElement> = {} as ElementRef;
 
   imagesList: Image[] = [];
   searchText: string = '';
+  dynamicItemSize: number = 563;
 
   ngOnInit(): void {
     this.imagesList = this.imageListGeneratorService.getImageList();
@@ -63,8 +68,14 @@ export class HomePage implements OnInit {
     this.imagesList = this.imageListGeneratorService.getImageList();
   }
 
-  // Some image don't exist in the API, in that case load a default error image
+  // Some images don't exist in picsum, in that case load a default error image
   imageLoadOnError(image: Image): void {
     image.photo = `assets/image-error.svg`;
+  }
+
+  // Changes the ItemSize of CdkVirtualScroll for a smother scroll no mater the window size
+  @HostListener('window:resize')
+  onResize() {
+    this.dynamicItemSize = this.imageBox.nativeElement.clientHeight;
   }
 }
