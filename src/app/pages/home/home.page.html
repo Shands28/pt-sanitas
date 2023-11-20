@@ -1,25 +1,23 @@
-<div class="home-wrapper">
-  <div class="search-container">
-    <div>
+<div class="home">
+  <div class="home__search">
       <ion-searchbar
-        color="dark" placeholder="Introduzca el texto/id a filtrar" [(ngModel)]="searchText"
-        (ionChange)="searchImage()" (ionClear)="clearSearch()" showClearButton="" type="text">
+        color="dark" placeholder="{{'searchPlaceholder' | translate}}" [(ngModel)]="searchText"
+        (ionChange)="searchImage()" (ionClear)="clearSearch()" showClearButton="" type="text" class="home__search">
       </ion-searchbar>
-    </div>
   </div>
-  <div class="images-container">
-    <cdk-virtual-scroll-viewport [itemSize]="dynamicItemSize">
-      <div *cdkVirtualFor="let image of imagesList" class="image-box" #imageBox>
+  <div class="home__imagesList">
+    <cdk-virtual-scroll-viewport [itemSize]="dynamicItemSize" [minBufferPx]="dynamicItemSize*2" [maxBufferPx]="dynamicItemSize*3" class="home__virtualScroll">
+      <div *cdkVirtualFor="let image of imagesList" class="home__imageBox" #imageBox>
         <ion-card>
-          <img [src]="image.photo" [alt]="image.text" (error)="imageLoadOnError(image)">
+          <img [src]="image.photo" [alt]="image.text" (error)="imageLoadOnError(image)" class="home__image">
           <ion-card-header>
             <ion-card-subtitle>#{{image.id}}</ion-card-subtitle>
             <ion-card-title>{{image.text | titlecase}}</ion-card-title>
           </ion-card-header>
         </ion-card>
       </div>
-      <ion-text color="warning" class="warning-search" *ngIf="imagesList.length === 0">
-        <h2>No se encuentran imágenes, pruebe a buscar otro texto/id</h2>
+      <ion-text color="warning" class="home__text" *ngIf="imagesList.length === 0">
+        <h2>{{'searchEmpty' | translate}}</h2>
       </ion-text>
     </cdk-virtual-scroll-viewport>
   </div>
