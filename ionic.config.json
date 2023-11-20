@@ -1,7 +1,7 @@
 {
-  "name": "pt-sanitas",
+  "name": "listado-imagenes-sanitas",
   "integrations": {
     "capacitor": {}
   },
-  "type": "angular-standalone"
+  "type": "angular"
 }

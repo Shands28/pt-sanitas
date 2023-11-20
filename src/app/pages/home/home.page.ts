@@ -1,47 +1,11 @@
 import {Component, ElementRef, HostListener, inject, OnInit, ViewChild} from '@angular/core';
-import {
-  IonHeader,
-  IonToolbar,
-  IonTitle,
-  IonContent,
-  IonSearchbar,
-  IonText,
-  IonCard,
-  IonCardHeader,
-  IonCardSubtitle,
-  IonCardTitle
-} from '@ionic/angular/standalone';
-import {NgForOf, NgIf, NgOptimizedImage, TitleCasePipe} from "@angular/common";
-import {FormsModule} from "@angular/forms";
-import {ImageListGeneratorService} from "../services/image-list-generator.service";
-import {Image} from "../interfaces/image";
-import {CdkFixedSizeVirtualScroll, CdkVirtualForOf, CdkVirtualScrollViewport} from "@angular/cdk/scrolling";
+import {ImageListGeneratorService} from "../../shared/services/image-list-generator.service";
+import {Image} from "../../shared/interfaces/image";
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
-  standalone: true,
-  imports: [
-    IonHeader,
-    IonToolbar,
-    IonTitle,
-    IonContent,
-    NgForOf,
-    NgOptimizedImage,
-    FormsModule,
-    IonSearchbar,
-    TitleCasePipe,
-    IonText,
-    NgIf,
-    IonCard,
-    IonCardHeader,
-    CdkVirtualScrollViewport,
-    CdkFixedSizeVirtualScroll,
-    CdkVirtualForOf,
-    IonCardSubtitle,
-    IonCardTitle
-  ],
 })
 export class HomePage implements OnInit {
 

@@ -1,13 +1,20 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { HomePage } from './home.page';
-import {Image} from "../interfaces/image";
+import {HomePage} from './home.page';
+import {Image} from "../../shared/interfaces/image";
+import {CUSTOM_ELEMENTS_SCHEMA} from "@angular/core";
+import {ScrollingModule} from "@angular/cdk/scrolling";
 
 describe('HomePage', () => {
   let component: HomePage;
   let fixture: ComponentFixture<HomePage>;
 
   beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [HomePage],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      imports: [ScrollingModule]
+    }).compileComponents();
     fixture = TestBed.createComponent(HomePage);
     component = fixture.componentInstance;
     fixture.detectChanges();
